@@ -1,0 +1,22 @@
+
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Atributs numèrics a analitzar
+num_cols = ['carat', 'price', 'depth', 'x', 'y', 'z', 'table']
+
+# Detecció d'outliers amb IQR
+outliers_dict = {}
+
+for col in num_cols:
+    Q1 = df_train[col].quantile(0.25)
+    Q3 = df_train[col].quantile(0.75)
+    IQR = Q3 - Q1
+    lower_bound = Q1 - 1.5 * IQR
+    upper_bound = Q3 + 1.5 * IQR
+    
+    # Mostres fora dels límits
+    outliers = df_train[(df_train[col] < lower_bound) | (df_train[col] > upper_bound)]
+    outliers_dict[col] = outliers.shape[0]
+    
+    print(f"{col}: {outliers.shape[0]} outliers")
