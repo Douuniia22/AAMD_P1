@@ -1,1 +1,3 @@
-eo
+preu: > 0
+carat: entre aquests valors: [0.2 - 5.01]
+
