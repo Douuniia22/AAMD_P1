@@ -20,3 +20,5 @@ for col in num_cols:
     outliers_dict[col] = outliers.shape[0]
     
     print(f"{col}: {outliers.shape[0]} outliers")
+
+
